@@ -1,0 +1,155 @@
+/* Import slick-carousel styles first */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+/* Then TailwindCSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+.animate-slide-out {
+  animation: slide-out 0.5s ease-in forwards;
+}
+
+.carousel .control-arrow {
+  background-color: rgba(0, 0, 0, 0.7); /* Темный фон */
+  border-radius: 50%; /* Круглая форма */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 50%; /* Центровка по вертикали */
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.carousel .control-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.5); /* Более светлый фон при наведении */
+  color: black; /* Изменение цвета стрелки */
+  transform: scale(1.2); /* Увеличение при наведении */
+}
+
+.carousel .control-prev.control-arrow {
+  left: -30px; /* Расположение слева */
+}
+
+.carousel .control-next.control-arrow {
+  right: -30px; /* Расположение справа */
+}
+
+.carousel .control-arrow:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+.carousel .control-prev.control-arrow:before {
+  transform: rotate(45deg);
+}
+
+.carousel .control-next.control-arrow:before {
+  transform: rotate(-45deg);
+}
+
+.spinner {
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input[type="file"]::file-selector-button {
+  accent-color: #10b981; /* emerald-500 */
+}
+
+.menu-slide-enter {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.menu-slide-exit {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 414px) { /* iPhone 10/XS */
+  .flex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links {
+    flex-direction: column;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+  }
+
+  .input-file {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .checkbox-label {
+    font-size: 14px;
+  }
+
+  .modal {
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 20px 10px;
+    font-size: 14px;
+  }
+
+  .button {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .menu-button {
+    padding: 12px;
+  }
+}
